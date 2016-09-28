@@ -135,10 +135,16 @@ my $cards_ref = \@cards; # hold the array ref
 my $card_count = @$cards_ref;
 my @card_copy = @$cards_ref;
 
+print $card_count . "number of cards \n";
+print @card_copy . "array of values \n";
+
 my $first_card = $cards_ref->[0];
 my $last_card = $cards_ref->[-1];
 
 print $first_card . "\t" . $last_card . "\n";
+my @high_cards = @{$cards_ref}[0..2,-1];
+print @high_cards, " high_cards\n";
+
 
 my $ary = \@myarray; # reference to a named array
 my $hsh = \%myhash; # reference to a named hash
