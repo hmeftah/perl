@@ -3,7 +3,7 @@
   <component name="Perl5Settings">
     <option name="libRootUrls">
       <list>
-        <option value="file://$PROJECT_DIR$/header/lib" />
+        <option value="file://$PROJECT_DIR$/regex/lib" />
       </list>
     </option>
   </component>
