@@ -16,7 +16,7 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="jdk" jdkName="Perl v5.24.0 (x86_64-linux-thread-multi)" jdkType="Perl5 Interpreter" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="jdk" jdkName="Perl v5.24.0 (x86_64-linux-thread-multi)" jdkType="Perl5 Interpreter" />
   </component>
 </module>
