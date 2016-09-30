@@ -105,11 +105,8 @@ else
 
 # variables
 my $answer = 42; # an integer
-
 my $pi = 3.14159265; # a "real" number
-
 my $avocados = 6.02e23; # scientific notation
-
 my $pet = "Camel"; # string
 
 my $file = "/home/hme/.bashrc";

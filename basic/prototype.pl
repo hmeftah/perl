@@ -9,6 +9,7 @@ use Test::TCP;
 use Test::More;
 use FindBin;
 
+use Data::Dumper;
 
 use autodie;
 
@@ -31,3 +32,13 @@ sub test
 my $mytest = 3;
 
 test_redis(\&test,$mytest);
+
+ print "\n";
+
+#--------------------------------------------------------------------------------------------
+my %good_opt = map {$_ => 1, "-$_" => 1}
+    qw(memory dw_size mode recsep discipline autodefer autochomp autodefer_threshhold concurrent);
+
+print Dumper(%good_opt);
+
+

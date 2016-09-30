@@ -1,6 +1,7 @@
 #!/usr/local/bin/parallel --shebang-wrap  /opt/ActivePerl5.24/bin/perl -w
 use strict;
 use warnings;
+use v5.24;
 
 $|= 1;
 
@@ -43,7 +44,7 @@ if ($isbn =~ $regex){
 
 #------------- global matching -----------------------------
 
-$_ = " perl formation 2016";
+$_ = " perl formation 2017";
 
 my @words = /(\S+)/g ; #
 
@@ -57,15 +58,21 @@ print $word_count."\n";
 
 #------------- regex NSS ----------------------------------
 
-my $nss = '28212A160004';
+my $nss = '282122A770004 12';
+if ($nss =~ m/^([1|2])(?#genre)([0-9]{2})(?#annee)([0-9]{2})(?#mois)([0-9][0-9]|[2-2A-B])(?#dept)/i) {
+    print "genre: $1 \n";
+    print "annee : $2 \n";
+    print "mois : $3 \n";
+    print "dept : $4 \n";
 
-$nss =~ m/\A(\d{1})(?#genre) (\d{2})(?#anne) (\d{2})(?#month)/i;
+}
+#-----------------------------------------------------------
+$_ = "Bilbo Baggins's birthday is September 22";
+/(.*)'s birthday is (.*)/;
+say "Person: $1";
+say "Date: $2";
 
-print <<"HERE";
-Genre: $1
-annee: $2
-mois: $3
-HERE
+
 
 #------------- texte avec une reference produit ----------------------------------
 
