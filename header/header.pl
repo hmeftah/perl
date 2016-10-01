@@ -3,13 +3,32 @@
 use strict;
 use warnings;
 
-use File::Which;
-use File::Spec ();
+use Benchmark qw/cmpthese timethese/;
+use Tie::File;
 
-our $VERSION='1.00';
 
-use constant IS_DOS => ($^O eq 'MSWin32' or $^O eq 'dos' or $^O eq 'os2');
+my @array;
+my @sort_array;
 
-if (IS_DOS){
-
+## number one  load from file
+sub One {
+    tie @array , 'Tie::File', '/home/hme/table_employee.txt' or die "file not found\n";
 }
+## number two - an alphabetic sort
+sub Two {
+    @sort_array = sort @array;
+}
+## number three - display
+sub Three {
+    for my $i (@sort_array){
+        print $i . "\n";
+    }
+}
+
+## We'll test each one, with simple labels
+timethese (
+        -5,
+        {   'Method One' => '&One',
+            'Method Two' => '&Two',
+            'Method Three' => '&Three'
+        });
