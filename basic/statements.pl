@@ -1,6 +1,6 @@
 #!/opt/ActivePerl5.24/bin/perl -w
 
-use Modern::Perl '2015';
+# use Modern::Perl '2015';
 use strict;    # force to use local or global variable by using "my" or "our".
 use Carp;      # carp gives you more info as to  where the message comes from (context)
 use warnings;  # detect all warnings
@@ -165,4 +165,16 @@ print "\n";
 my $count = @ar;
 print $count;
 
+#-------------- compile flow ----
+my $x = 12;
+my $y;
 
+BEGIN {
+    $x = 14;
+    print "x => $x\n";
+    $y = 16;
+    print "y => $y\n";
+}
+
+print "x => $x\n";
+print "y => $y\n";

@@ -2,23 +2,25 @@
 
 use strict;
 use warnings;
+use v5.24;
 
-use Data::Dumper;
+
+#use Data::Dumper;
 
 
 my @names = ('Apple', 'Banana', 'Grape');
 my $last_one = pop @names;
 
-print " 1 - $last_one\n";  #
-print " 2- @names\n";     #
+say " 1 - $last_one";  #
+say " 2- @names";     #
 
-@names = ('Foo', 'Bar');
+@names = qw(Foo Bar);
 push @names, 'Moo';
 print "3 - @names\n";     # Foo Bar Moo
 
-my @others = ('Darth', 'Vader');
+my @others = ('Paul', 'Andre');
 push @names, @others;
-print "4 - @names\n";
+print "4 - @names\n";#
 
 
 @names = ('Foo', 'Bar', 'Moo');
@@ -31,21 +33,56 @@ print " 6 - @names\n";     # Bar Moo
 unshift @names, 'Moo';
 print "7 - @names\n";     # Moo Foo Bar
 
-@others = ('Darth', 'Vader');
-unshift @names, @others;
-print " 8 - @names\n";
+
+my $var_names="Paul,Mary,John,Pierre";
+@names = split(',',$var_names);
+#say @names;
+foreach  (@names)
+{
+    say $_;
+}
+my $values = join ('-',@names);
+say $values;
+
+my @sort_array = sort @names;
+say @sort_array;
+
+#=========== hash
+my %data = ("john",45,'lisa',30,'pierre',40);
+print "\$data{john}= $data{'john'}\n";
+print "\$data{Lisa}= $data{'lisa'}\n";
+print "\$data{pierre}= $data{'pierre'}\n";
+
+#-- autre forme d'ecriture
+%data = ('john'  => 45,
+         'lisa'  => 30,
+         'pierre'=> 40,
+        );
+
+@names = sort keys %data;
+say @names;
+my @values = sort values %data;
+say @values;
+$data{'test'}=55;
+say sort keys %data;
+delete $data{'lisa'};
+say sort keys %data;
+
+
+
+
 
 #------------------- Data dumper my array -------------
 #print Dumper(@names);
 
 #-----------------------------------------------------
-my @animals = ('chien', 'chat', 'lapin');
+#my @animals = ('chien', 'chat', 'lapin');
 
-my @values;
-push @values, \@animals;
-push @values, \@names;
+#my @values;
+#push @values, \@animals;
+#push @values, \@names;
 
-print Dumper(@values);
+#print Dumper(@values);
 
 
 
